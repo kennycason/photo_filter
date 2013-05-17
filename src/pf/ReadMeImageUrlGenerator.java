@@ -2,37 +2,42 @@ package pf;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 public class ReadMeImageUrlGenerator {
 
 	public static void main(String[] args) throws IOException {
-		// Directory path here
 		String path = "./output/";
 
-		String file;
 		File folder = new File(path);
 		File[] listOfFiles = folder.listFiles();
+		List<String> filesList = new LinkedList<String>();
+		for (int i = 0; i < listOfFiles.length; i++) {
+			if(listOfFiles[i].getName().contains(".png")) {
+			filesList.add(listOfFiles[i].getName());
+		}
+		}
+		String[] files = filesList.toArray(new String[filesList.size()]);
+		Arrays.sort(files);
 
 		System.out.println("<table>");
-		for (int i = 0; i < listOfFiles.length; i += 3) {
+		for (int i = 0; i < files.length; i += 3) {
 			System.out.println("<tr><td>");
-			if (listOfFiles[i].isFile()) {
-				file = listOfFiles[i].getName();
-				System.out.println(file.replace(".png", "") + "<br/>");
-				System.out.println("<img src=\"https://raw.github.com/kennycason/photo_filter/master/output/thumb/" + file + "\"/>");
-			}
-			if(i + 1 < listOfFiles.length) {
+			System.out.println(files[i].replace(".png", "") + "<br/>");
+			System.out.println("<img src=\"https://raw.github.com/kennycason/photo_filter/master/output/thumb/" + files[i] + "\"/>");
+	
+			if(i + 1 < files.length) {
 				System.out.println("</td><td>");
-				file = listOfFiles[i + 1].getName();
-				System.out.println(file.replace(".png", "") + "<br/>");
-				System.out.println("<img src=\"https://raw.github.com/kennycason/photo_filter/master/output/thumb/" + file + "\"/>");
+				System.out.println(files[i + 1].replace(".png", "") + "<br/>");
+				System.out.println("<img src=\"https://raw.github.com/kennycason/photo_filter/master/output/thumb/" + files[i + 1] + "\"/>");
 			
 			}
-			if(i + 2 < listOfFiles.length) {
+			if(i + 2 < files.length) {
 				System.out.println("</td><td>");
-				file = listOfFiles[i + 2].getName();
-				System.out.println(file.replace(".png", "") + "<br/>");
-				System.out.println("<img src=\"https://raw.github.com/kennycason/photo_filter/master/output/thumb/" + file + "\"/>");
+				System.out.println(files[i + 2].replace(".png", "") + "<br/>");
+				System.out.println("<img src=\"https://raw.github.com/kennycason/photo_filter/master/output/thumb/" + files[i + 2] + "\"/>");
 			
 			}
 			System.out.println("</td></tr>");
