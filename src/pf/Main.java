@@ -32,8 +32,7 @@ import pf.image.Image;
 public class Main {
 
 	public static void main(String[] args) throws IOException {
-		Random r = new Random();
-		
+
 		IFilter[] filters = { 
 				new DefaultFilter(), 
 				new RedFilter(),
@@ -78,7 +77,6 @@ public class Main {
 		f.setSize(imagePanel.image().width(), imagePanel.image().height());
 		f.setLocation(0, 0);
 		f.setVisible(true);
-		// random filters[r.nextInt(filters.length)]
 		
 		int i = 0;
 		for(;;) {

@@ -14,7 +14,7 @@ public class ReadMeImageUrlGenerator {
 		File[] listOfFiles = folder.listFiles();
 
 		System.out.println("<table>");
-		for (int i = 0; i < listOfFiles.length; i += 2) {
+		for (int i = 0; i < listOfFiles.length; i += 3) {
 			System.out.println("<tr><td>");
 			if (listOfFiles[i].isFile()) {
 				file = listOfFiles[i].getName();
@@ -24,6 +24,13 @@ public class ReadMeImageUrlGenerator {
 			if(i + 1 < listOfFiles.length) {
 				System.out.println("</td><td>");
 				file = listOfFiles[i + 1].getName();
+				System.out.println(file.replace(".png", "") + "<br/>");
+				System.out.println("<img src=\"https://raw.github.com/kennycason/photo_filter/master/output/thumb/" + file + "\"/>");
+			
+			}
+			if(i + 2 < listOfFiles.length) {
+				System.out.println("</td><td>");
+				file = listOfFiles[i + 2].getName();
 				System.out.println(file.replace(".png", "") + "<br/>");
 				System.out.println("<img src=\"https://raw.github.com/kennycason/photo_filter/master/output/thumb/" + file + "\"/>");
 			
