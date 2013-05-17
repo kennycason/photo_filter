@@ -1,13 +1,13 @@
 package pf;
 
 import java.io.IOException;
-import java.util.Random;
 
 import javax.swing.JFrame;
 
 import pf.filter.BlueFilter;
 import pf.filter.BlurFilter;
 import pf.filter.BrightnessThresholdFilter;
+import pf.filter.CosineRedFilter;
 import pf.filter.DarkFilter;
 import pf.filter.DefaultFilter;
 import pf.filter.GrayScaleBlueFilter;
@@ -27,6 +27,8 @@ import pf.filter.RGBAverageFilter;
 import pf.filter.RGBToHSBFilter;
 import pf.filter.RedFilter;
 import pf.filter.ScaleSaturationFilter;
+import pf.filter.SineCosineFilter;
+import pf.filter.SineRedFilter;
 import pf.image.Image;
 
 public class Main {
@@ -66,7 +68,10 @@ public class Main {
 				new InvertRGBFilter(), 
 				new InvertHSBFilter(),
 				new InvertSBFilter(), 
-				new ScaleSaturationFilter(20) 
+				new ScaleSaturationFilter(20),
+				new SineRedFilter(),
+				new CosineRedFilter(),
+				new SineCosineFilter()
 		};
 
 		Image image = new Image("images/charlize.jpg");
