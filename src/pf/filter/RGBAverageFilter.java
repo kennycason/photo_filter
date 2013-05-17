@@ -1,0 +1,28 @@
+package pf.filter;
+
+import pf.image.Image;
+
+/**
+ * "perfect" grayscale
+ * @author kenny
+ *
+ */
+public class RGBAverageFilter extends AbstractFilter {
+
+	@Override
+	public void filter(Image image) {
+		for(int y = 0; y < image.height(); y++) {
+			for(int x = 0; x < image.width(); x++) {
+				int color = image.get(x, y);
+
+				int avg = (red(color) + green(color) + blue(color)) / 3;
+				image.set(x, y, color(avg, avg, avg));
+			}
+		}
+	}
+
+	public String name() {
+		return "rgb_average";
+	}
+	
+}
