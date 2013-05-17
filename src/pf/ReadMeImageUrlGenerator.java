@@ -3,6 +3,7 @@ package pf;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -21,23 +22,24 @@ public class ReadMeImageUrlGenerator {
 		}
 		String[] files = filesList.toArray(new String[filesList.size()]);
 		Arrays.sort(files);
+		Date dt = new Date();
 
 		System.out.println("<table>");
 		for (int i = 0; i < files.length; i += 3) {
 			System.out.println("<tr><td>");
 			System.out.println(files[i].replace(".png", "") + "<br/>");
-			System.out.println("<img src=\"https://raw.github.com/kennycason/photo_filter/master/output/thumb/" + files[i] + "\"/>");
+			System.out.println("<img src=\"https://raw.github.com/kennycason/photo_filter/master/output/thumb/" + files[i] +  "?time=" + dt.getTime() + "\"/>");
 	
 			if(i + 1 < files.length) {
 				System.out.println("</td><td>");
 				System.out.println(files[i + 1].replace(".png", "") + "<br/>");
-				System.out.println("<img src=\"https://raw.github.com/kennycason/photo_filter/master/output/thumb/" + files[i + 1] + "\"/>");
+				System.out.println("<img src=\"https://raw.github.com/kennycason/photo_filter/master/output/thumb/" + files[i + 1] +  "?time=" + dt.getTime() + "\"/>");
 			
 			}
 			if(i + 2 < files.length) {
 				System.out.println("</td><td>");
 				System.out.println(files[i + 2].replace(".png", "") + "<br/>");
-				System.out.println("<img src=\"https://raw.github.com/kennycason/photo_filter/master/output/thumb/" + files[i + 2] + "\"/>");
+				System.out.println("<img src=\"https://raw.github.com/kennycason/photo_filter/master/output/thumb/" + files[i + 2] +  "?time=" + dt.getTime() + "\"/>");
 			
 			}
 			System.out.println("</td></tr>");
