@@ -19,7 +19,7 @@ public class ReadMeImageUrlGenerator {
 			if (listOfFiles[i].isFile()) {
 				file = listOfFiles[i].getName();
 				System.out.println(file.replace(".png", "") + "<br/>");
-				System.out.println("<img src=\"https://raw.github.com/kennycason/photo_filter/master/output/thumb/" + file + "/>");
+				System.out.println("<img src=\"https://raw.github.com/kennycason/photo_filter/master/output/thumb/" + file + "\"/>");
 			}
 			if(i + 1 < listOfFiles.length) {
 				System.out.println("</td><td>");
