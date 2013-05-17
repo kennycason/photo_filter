@@ -34,6 +34,7 @@ public class ImagePanel extends JPanel {
         g.setColor(Color.WHITE);
         g.drawString(filter.name(), 5, 14);
         image.save("output/" + filter.name() + ".png");
+        image.saveThumbnail("output/thumb/" + filter.name() + ".png");
     }
    
     protected void repaint(Graphics g) {

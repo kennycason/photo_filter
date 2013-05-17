@@ -87,7 +87,7 @@ public class Main {
 			imagePanel.repaint();
 			try {
 				if(filters[i].name().startsWith("blur")) {
-					Thread.sleep(5000);
+					Thread.sleep(3000);
 				} else {
 					Thread.sleep(1000);
 				}
