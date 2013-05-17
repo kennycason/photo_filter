@@ -2,14 +2,12 @@ package pf;
 
 import java.io.IOException;
 
-import javax.swing.JFrame;
-
 import pf.filter.BlueFilter;
-import pf.filter.GaussianBlurFilter;
 import pf.filter.BrightnessThresholdFilter;
 import pf.filter.CosineRedFilter;
 import pf.filter.DarkFilter;
 import pf.filter.DefaultFilter;
+import pf.filter.GaussianBlurFilter;
 import pf.filter.GrayScaleBlueFilter;
 import pf.filter.GrayScaleGreenFilter;
 import pf.filter.GrayScaleRGBAverageFilter;
@@ -76,30 +74,14 @@ public class Main {
 				new SineCosineFilter()
 		};
 
-		Image image = new Image("images/charlize.jpg");
-		ImagePanel imagePanel = new ImagePanel(image);
-		JFrame f = new JFrame();
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.add(imagePanel);
-		f.setSize(imagePanel.image().width(), imagePanel.image().height());
-		f.setLocation(0, 0);
-		f.setVisible(true);
-		
-		int i = 0;
-		for(;;) {
-			imagePanel.image(new Image("images/charlize.jpg"));
-			System.out.println(i + " " + filters[i].name());
-			imagePanel.filter(filters[i]);
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			imagePanel.repaint();
-			
-			i++;
-			i %= filters.length;
+		for(IFilter filter : filters) {
+			Image image = new Image("images/charlize.jpg");
+			System.out.println(filter.name());
+			filter.filter(image);
+	        image.save("output/" + filter.name() + ".png");
+	        image.saveThumbnail("output/thumb/" + filter.name() + ".png");
 		}
+		System.out.println("Filtered images generated!");
 
 	}
 }

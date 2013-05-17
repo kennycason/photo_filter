@@ -27,14 +27,16 @@ public class ImagePanel extends JPanel {
     }
  
     protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.drawImage(image.image(), 0, 0, this);
-        g.setColor(Color.BLACK);
-        g.fillRect(0, 0, 200, 22);
-        g.setColor(Color.WHITE);
-        g.drawString(filter.name(), 5, 14);
-        image.save("output/" + filter.name() + ".png");
-        image.saveThumbnail("output/thumb/" + filter.name() + ".png");
+    	synchronized(this) {
+	        super.paintComponent(g);
+	        g.drawImage(image.image(), 0, 0, this);
+	        g.setColor(Color.BLACK);
+	        g.fillRect(0, 0, 200, 22);
+	        g.setColor(Color.WHITE);
+	        g.drawString(filter.name(), 5, 14);
+	        image.save("output/" + filter.name() + ".png");
+	        image.saveThumbnail("output/thumb/" + filter.name() + ".png");
+    	}
     }
    
     protected void repaint(Graphics g) {
