@@ -5,7 +5,7 @@ import java.io.IOException;
 import javax.swing.JFrame;
 
 import pf.filter.BlueFilter;
-import pf.filter.BlurFilter;
+import pf.filter.GaussianBlurFilter;
 import pf.filter.BrightnessThresholdFilter;
 import pf.filter.CosineRedFilter;
 import pf.filter.DarkFilter;
@@ -59,9 +59,11 @@ public class Main {
 				new BrightnessThresholdFilter(0.6), 
 				new BrightnessThresholdFilter(0.8),
 				new RGBToHSBFilter(),
-				new BlurFilter(1), 
-				new BlurFilter(2),
-				new BlurFilter(3),
+				new GaussianBlurFilter(1, 1.5), 
+				new GaussianBlurFilter(2, 1.5),
+				new GaussianBlurFilter(3, 1.5),
+				new GaussianBlurFilter(3, 4.5),
+				new GaussianBlurFilter(5, 2.4),
 				new InvertBrightnessFilter(),
 				new InvertSaturationFilter(), 
 				new InvertHueFilter(),
@@ -86,17 +88,15 @@ public class Main {
 		int i = 0;
 		for(;;) {
 			imagePanel.image(new Image("images/charlize.jpg"));
+			System.out.println(i + " " + filters[i].name());
 			imagePanel.filter(filters[i]);
-			imagePanel.repaint();
 			try {
-				if(filters[i].name().startsWith("blur")) {
-					Thread.sleep(3000);
-				} else {
-					Thread.sleep(1000);
-				}
+				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
+			imagePanel.repaint();
+			
 			i++;
 			i %= filters.length;
 		}

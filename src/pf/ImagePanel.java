@@ -23,11 +23,11 @@ public class ImagePanel extends JPanel {
     
     public void filter(IFilter filter) {
     	this.filter = filter;
+    	filter.filter(image);
     }
  
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        filter.filter(image);
         g.drawImage(image.image(), 0, 0, this);
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, 200, 22);

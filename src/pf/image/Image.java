@@ -44,6 +44,7 @@ public class Image {
 
 	public void save(String file) {
 		try {
+			System.out.println("Writing file: " + file);
 		    ImageIO.write(bi, "png", new File(file));
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -74,6 +75,7 @@ public class Image {
 			g.dispose();
 		}
 		try {
+			System.out.println("Writing file: " + file);
 			ImageIO.write(newImage, "png", new File(file));
 		} catch (IOException e) {
 			e.printStackTrace();
